@@ -18,7 +18,7 @@ int main()
 	
 	for(;;)
 	{
-	cout<<"------------Enter your choice-----------"<<endl;
+	cout<<"\n------------Enter your choice-----------\n"<<endl;
 	cout<<"\n1)Encrypt\n2)Decrypt\n3)Exit"<<endl;
 	cin>>choice;	
 		switch(choice)
@@ -41,7 +41,23 @@ int main()
 			    cout<<"The cipher Text is : "<<plaintext<<endl;//the cipher text
 			     	
 			   continue;
-			case 2:
+			case 2://decryption
+				cout<<"Enter the Cipher Text"<<endl;
+			    cin>>ws;
+			    getline(cin,ciphertext); //to consider spaces in string input
+			    
+			    for(unsigned i = 0 ; i<ciphertext.size(); i++)
+			    {
+			    	if(isalpha(ciphertext[i])) 
+				    {
+				    
+			    	    ascii = int(ciphertext[i]); //storing the ascii value of the string
+			    	    cpt = (ascii - 1);//cipher text in ascii value
+			    	    ciphertext[i] = char(cpt);//converting ascii to character value
+			    	    }//end if
+			    }//end for
+			    cout<<"The Original Message is : "<<ciphertext<<endl;//the cipher text
+			     	
 			   continue;
 			case 3:
 			   break;	
