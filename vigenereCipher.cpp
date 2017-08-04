@@ -7,8 +7,8 @@ using namespace std;
 //program to encrypt a plaintext message using a VIGENERE cipher which is a polyalphabetic substitution technique which
 //uses different letters for to encrypt each alphabet in plaintext.
 
-//function to take key as input
-string key(string str, string key)
+//function to generate key in a cyclic manner
+string genkey(string str, string key)
 {
 	int x = str.size();
 	for(int i=0;;i++)
@@ -43,6 +43,17 @@ string encrypt(string str , string key)
 
 int main()
 {	//an array of alaphabets which will be used in substitution
+ 
+ 	string plaintext,key;
+ 	cout<<"Enter the plaintext to encrypt"<<endl;
+ 	cin>>plaintext;
+ 	cout<<"Enter the key: "<<endl;
+ 	cin>>key;
+	string keyword = genkey(plaintext,key); //generating the key
+	
+ 	cout<<"The encrypted cipher text is :"<<encrypt(plaintext,keyword)<<endl;
+ 	
+ 	
 
 	
 return 0;
