@@ -11,10 +11,11 @@ using namespace std;
 
 int main()
 {
-	int choice,ascii,cpt;
+	int choice,ascii,cpt,key;
 	string plaintext;
 	string ciphertext;
-
+	key = rand() % 26  ;
+	cout<<key;
 	
 	for(;;)
 	{
@@ -34,7 +35,7 @@ int main()
 				    {
 				    
 			    	    ascii = int(plaintext[i]); //storing the ascii value of the string
-			    	    cpt = (ascii + 1);//cipher text in ascii value
+			    	    cpt = ((ascii + key)%26);//cipher text in ascii value
 			    	    plaintext[i] = char(cpt);//converting ascii to character value
 			    	    }//end if
 			    }//end for
@@ -43,8 +44,8 @@ int main()
 			   continue;
 			case 2://decryption
 				cout<<"Enter the Cipher Text"<<endl;
-			    cin>>ws;
-			    getline(cin,ciphertext); //to consider spaces in string input
+			        cin>>ws;//clearing whitespaces
+			        getline(cin,ciphertext); //to consider spaces in string input
 			    
 			    for(unsigned i = 0 ; i<ciphertext.size(); i++)
 			    {
@@ -52,7 +53,7 @@ int main()
 				    {
 				    
 			    	    ascii = int(ciphertext[i]); //storing the ascii value of the string
-			    	    cpt = (ascii - 1);//cipher text in ascii value
+			    	    cpt = ((ascii - key) % 26);//cipher text in ascii value
 			    	    ciphertext[i] = char(cpt);//converting ascii to character value
 			    	    }//end if
 			    }//end for
@@ -60,8 +61,8 @@ int main()
 			     	
 			   continue;
 			case 3:
-			   break;	
-		}
+			break;
+		}//end switch
 		
 	break;	
 	}//end for
